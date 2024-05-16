@@ -1,0 +1,21 @@
+SELECT * FROM tbcategorias
+
+SELECT * FROM tbcategorias WHERE idCategoria = 3
+
+SELECT * FROM tbcategorias WHERE nomeCategoria LIKE '%cie%';
+
+INSERT INTO tbcategorias (nomeCategoria) VALUES ('Dorama')
+
+UPDATE tbcategorias SET nomeCategoria = 'Suspense' WHERE idCategoria = 8;
+
+DELETE FROM tbcategorias WHERE idCategoria = 8;
+
+
+INSERT INTO tbfilmes (tituloFilme,duracaoFilme,valorLocacao,idCategoria,statusFilme)
+VALUES ('As aventuras de Dora','2horas',9.9,3,0);
+
+
+
+
+
+
