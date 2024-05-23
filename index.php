@@ -39,6 +39,9 @@
             case "videos":
                 include("lista-videos.php");
                 break;
+            case "cad-videos":
+                include("cad-videos.php");
+                break;
             case "categorias":
                 include("lista-categorias.php");
                 break;

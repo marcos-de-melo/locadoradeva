@@ -8,6 +8,9 @@ if(isset($_POST["txtPesquisa"])){
 
 <h2>Lista de Vídeos</h2>
 <div>
+    <a href="index.php?menu=cad-videos">Novo Vídeo</a>
+</div>
+<div>
     <form action="index.php?menu=videos" method="post">
         <label for="txtPesquisa">Pesquisar</label>
         <input type="search" name="txtPesquisa" id="txtPesquisa" value="<?=$txtPesquisa?>">
@@ -45,7 +48,20 @@ if(isset($_POST["txtPesquisa"])){
     </thead>
     <tbody>
         <?php
-            $sql = "SELECT * FROM tbfilmes";
+            $sql = "
+            SELECT 
+            idFilme,tituloFilme, duracaoFilme, valorLocacao, 
+             nomeCategoria, 
+            CASE
+                WHEN statusFilme = 0 THEN 'Disponivel'
+                WHEN statusFilme = 1 THEN 'Locado'
+                WHEN statusFilme = 2 THEN 'Indisponivel'
+            END
+            AS statusFilme 
+            FROM tbfilmes AS f INNER JOIN tbcategorias AS c 
+            ON f.idCategoria = c.idCategoria 
+            WHERE tituloFilme   LIKE '%{$txtPesquisa}%' 
+            order by tituloFilme asc";
             $rs = mysqli_query($conexao,$sql);
             while($dados = mysqli_fetch_assoc($rs)){
 
@@ -56,7 +72,7 @@ if(isset($_POST["txtPesquisa"])){
            <td><?=$dados["tituloFilme"]?></td> 
            <td><?=$dados["duracaoFilme"]?></td> 
            <td>R$ <?=$dados["valorLocacao"]?></td> 
-           <td><?=$dados["idCategoria"]?></td> 
+           <td><?=$dados["nomeCategoria"]?></td> 
            <td><?=$dados["statusFilme"]?></td> 
            <td>Editar</td> 
            <td>Excluir</td> 
