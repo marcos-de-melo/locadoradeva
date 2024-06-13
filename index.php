@@ -45,6 +45,15 @@
             case "inserir-videos":
                 include("inserir-videos.php");
                 break;
+            case "editar-videos":
+                include("editar-videos.php");
+                break;
+            case "atualizar-videos":
+                include("atualizar-videos.php");
+                break;
+            case "excluir-videos":
+                include("excluir-videos.php");
+                break;
             case "categorias":
                 include("lista-categorias.php");
                 break;

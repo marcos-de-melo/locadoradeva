@@ -74,8 +74,12 @@ if(isset($_POST["txtPesquisa"])){
            <td>R$ <?=$dados["valorLocacao"]?></td> 
            <td><?=$dados["nomeCategoria"]?></td> 
            <td><?=$dados["statusFilme"]?></td> 
-           <td>Editar</td> 
-           <td>Excluir</td> 
+           <td>
+            <a href="index.php?menu=editar-videos&idFilme=<?=$dados["idFilme"]?>">Editar</a>
+           </td> 
+           <td>
+           <a href="index.php?menu=excluir-videos&idFilme=<?=$dados["idFilme"]?>">Excluir</a>
+           </td> 
         </tr>
        <?php
             }
